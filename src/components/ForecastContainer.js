@@ -8,8 +8,6 @@ const ForecastContainer = (props) => {
 
   const [isHover, setIsHover] = useState(false)
   
-  
-
   return (
     <div 
       className='future-forecast-container' 

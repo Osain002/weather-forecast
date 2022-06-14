@@ -54,7 +54,26 @@
 }
 
 
+.recently-searched{
+  border: 1px solid black;
+  width: 20vw;
+  height: 10vh;
 
+  
+  min-width: 175pt;
+  margin: 10pt;
+
+  border-radius: 5pt;
+  background-color: rgba(0, 0, 0, 0.396);
+  backdrop-filter: blur(5px);
+  color: white;
+  padding: 3pt;
+}
+
+.recently-searched:hover{
+  background-color: rgba(81, 81, 81, 0.396);
+  backdrop-filter: blur(2px);
+}
 
 
 
@@ -68,14 +87,16 @@
   backdrop-filter:blur(6px);
   box-shadow: 20px 20px 75px black;
 
+  position: relative;
+  bottom: 35%;
+
   width: 50vw;
-  height: 25vw;
+  height: 20vw;
   min-width: 450pt;
   min-height: 150pt;
 
   margin:auto;
-  margin-top: 10pt;
-
+  
   padding-left: 1%;
   
 }
@@ -99,13 +120,12 @@
 .current-weather-info{
   font-size:calc(8px + 0.7vw);
   width: 40%;
-  min-height: 100pt;
-  height: 12vw;
-  position:inherit;
-  margin-left: 50%;
-  
-  
-  
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  right: 20pt;
   color: aliceblue;
   background-color: rgba(0, 0, 0, 0.186);
   padding: 10pt ;
@@ -122,7 +142,7 @@
 
 /*Future forecast styling*/
 .future-forecast-container{
-  width: 20vw;
+  width: 9vw;
   height: fit-content;
   min-height: 70pt;
   border: 2px solid black;
@@ -134,16 +154,9 @@
   cursor: pointer;
 }
 
-.future-forecast-container:hover{
-  border: 2px solid blue;
-}
 
-.hidden-data{
-  display: none;
-}
-.future-forecast-container:hover + .hidden-data{
-  display: block;
-}
+
+
 
 .forecast-icon-container{
   width:fit-content;
@@ -165,13 +178,13 @@
 
   display:flex;
   flex-direction: row;
-  width: 50vw;
+  width: fit-content;
   min-width: 460pt;
   margin: auto;
-  margin-top: 20pt;
+  
+  position: relative;
+  bottom: 30%;
 }
-
-
 
 
 .forecast-temp-container{
@@ -190,14 +203,9 @@
 }
 
 
-
-.days-list-container:hover{
-  width: 80vw;
-}
-
 .forecast-info{
   color: white;
-  font-size: calc(6pt + 0.5vw);
+  font-size: calc(4pt + 0.5vw);
   width:fit-content;
 }
 
