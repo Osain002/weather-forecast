@@ -1,38 +1,203 @@
-.App {
-  text-align: center;
+
+
+/* App.js and header styling */
+.App{
+  background-image: url('https://wallpaperaccess.com/full/504983.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  min-height: 500pt;
+  min-width: 900pt;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header{
+  padding-left: 10pt;
+  color: rgb(181, 235, 255);
+  background-color: rgba(0, 0, 0, 0.372);
+  backdrop-filter: blur(5px);
+  font-size: larger;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+/*Search bar styling*/
+
+.search_container{
+  top: 5vh;
+  margin: auto;
+  height: 5vw;
+  width: 50vw;
+  min-width: 300pt;
+  border-radius: 20px;
+  box-shadow: 10px 10px 45px black;
+  background-color: rgba(52, 52, 52, 0.254);
+  max-height: 30pt;
+  
+}
+ 
+.searchBar{
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg");
+  font-size: 14px;
+  background-position: center right 15px;
+  background-repeat: no-repeat;
+  background-size: 2vw 2vw;
+  
+  height: 5vw;
+  width: 50vw;
+  font-size: large;
+  padding: 15px;
+  border-radius: 20px;
+  max-height: 30pt;
+  min-width: 300pt;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+
+
+
+
+/* Current weather styling */
+.current-weather-container{
+  
+  border: 2px solid black;
+  border-radius: 20px;
+
+  background-color: rgba(0, 0, 0, 0.362);
+  backdrop-filter:blur(6px);
+  box-shadow: 20px 20px 75px black;
+
+  width: 50vw;
+  height: 25vw;
+  min-width: 450pt;
+  min-height: 150pt;
+
+  margin:auto;
+  margin-top: 10pt;
+
+  padding-left: 1%;
+  
+}
+
+
+
+.current-icon-container{
+  width: 8vw;
+  height: 8vw;
+  margin:auto;
+  margin-left: 15%;
+  margin-bottom: 20pt ;
+}
+
+.temp-icon{
+  margin: auto;
+  color: aliceblue;
+  min-width: 50pt;
+}
+
+.current-weather-info{
+  font-size:calc(8px + 0.7vw);
+  width: 40%;
+  min-height: 100pt;
+  height: 12vw;
+  position:inherit;
+  margin-left: 50%;
+  
+  
+  
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.186);
+  padding: 10pt ;
+  padding-left: 20pt;
+  padding-bottom: 20pt;
+  border-radius: 20pt;
+}
+
+
+
+
+
+
+
+/*Future forecast styling*/
+.future-forecast-container{
+  width: 20vw;
+  height: fit-content;
+  min-height: 70pt;
+  border: 2px solid black;
+  background-color: rgba(0, 0, 0, 0.254);
+  backdrop-filter: blur(3px);
+  border-radius: 20px;
+  margin: 5pt;
+  padding:5pt;
+  cursor: pointer;
+}
+
+.future-forecast-container:hover{
+  border: 2px solid blue;
+}
+
+.hidden-data{
+  display: none;
+}
+.future-forecast-container:hover + .hidden-data{
+  display: block;
+}
+
+.forecast-icon-container{
+  width:fit-content;
+  max-width: 9vw;
+  margin: auto;
+  margin-bottom: 10px;
+  top: 10pt;
+}
+
+.forecast-icon-container > img{
+  width: 5vw;
+  max-width: 75pt;
+  margin: auto;
+}
+
+
+
+.days-list-container{
+
+  display:flex;
+  flex-direction: row;
+  width: 50vw;
+  min-width: 460pt;
+  margin: auto;
+  margin-top: 20pt;
+}
+
+
+
+
+.forecast-temp-container{
+  position: relative;
+  bottom: 20px;
   color: white;
+  font-size: calc(5pt + 0.5vw);
+  width: fit-content;
+  height: fit-content;
+  min-width: 55pt;
+  margin: auto; 
 }
 
-.App-link {
-  color: #61dafb;
+.forecast-temp-container > h2 {
+  margin: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+.days-list-container:hover{
+  width: 80vw;
 }
+
+.forecast-info{
+  color: white;
+  font-size: calc(6pt + 0.5vw);
+  width:fit-content;
+}
+
