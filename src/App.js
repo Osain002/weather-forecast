@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react'
 import CurrentWeather from './components/CurrentWeather';
 import ForecastContainer from './components/ForecastContainer';
 import Header from './components/Header';
+import RecentlySearched from './components/RecentlySearched';
 
 
 
@@ -17,8 +18,23 @@ const App = () => {
   const [bgChange, setBgChange] = useState(0)
 
 
+
   const baseURL = "http://api.openweathermap.org/data/2.5/weather?" //base url for api request
   const apiKey = '611042e26a7e14d8816d44ac68c3562c'
+
+
+  const searchHist = [
+    {
+      location: 'Plymouth'
+    },
+    {
+      location: 'London'
+    },
+    {
+      location: 'Paris'
+    }
+  ]
+
 
 
   const background_list = [
@@ -102,6 +118,12 @@ const App = () => {
           />
         </form>
       </div>
+
+      {
+        searchHist.map((item) => <RecentlySearched/>)
+      }
+
+     
 
       {
         weatherData?(
