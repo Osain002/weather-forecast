@@ -66,8 +66,30 @@
   border-radius: 5pt;
   background-color: rgba(0, 0, 0, 0.396);
   backdrop-filter: blur(5px);
-  color: white;
+  color: rgb(181, 235, 255);
   padding: 3pt;
+
+  cursor: pointer;
+}
+
+
+
+.recently-searched > .searched-image-container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10pt;
+}
+
+.searched-temp{
+  width: fit-content;
+  height: fit-content;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  left: 50%;
+  color: white;
+
 }
 
 .recently-searched:hover{
@@ -87,8 +109,11 @@
   backdrop-filter:blur(6px);
   box-shadow: 20px 20px 75px black;
 
-  position: relative;
-  bottom: 35%;
+  position: absolute;
+  top: 25%;
+  transform: translateY(-50%);
+  left: 50%;
+  transform: translateX(-50%);
 
   width: 50vw;
   height: 20vw;
@@ -182,8 +207,10 @@
   min-width: 460pt;
   margin: auto;
   
-  position: relative;
-  bottom: 30%;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 
