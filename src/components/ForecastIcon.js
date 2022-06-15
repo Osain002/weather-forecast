@@ -16,7 +16,6 @@ const ForecastIcon = (props) => {
 
         var d = new Date(props.day.dt_txt)
         
-        console.log(days[d.getDay()])
         setDay(days[d.getDay()])
       },[props])
 
