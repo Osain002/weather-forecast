@@ -7,8 +7,6 @@
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
-  min-height: 500pt;
-  min-width: 900pt;
 }
 
 .header{
@@ -23,7 +21,6 @@
 
 
 /*Search bar styling*/
-
 .search_container{
   top: 5vh;
   margin: auto;
@@ -64,12 +61,14 @@
   margin: 10pt;
 
   border-radius: 5pt;
-  background-color: rgba(0, 0, 0, 0.396);
-  backdrop-filter: blur(5px);
+  background-color: rgba(75, 75, 75, 0.469);
+  backdrop-filter:blur(5px);
+  box-shadow: 10px 10px 40px black;
   color: rgb(181, 235, 255);
-  padding: 3pt;
+  padding-left: 10pt;
 
   cursor: pointer;
+
 }
 
 
@@ -92,8 +91,12 @@
 
 }
 
+.searched-image-container > img{
+  width: 5vw;
+  max-width: 75pt;
+}
 .recently-searched:hover{
-  background-color: rgba(81, 81, 81, 0.396);
+  background-color: rgba(118, 118, 118, 0.396);
   backdrop-filter: blur(2px);
 }
 
@@ -102,11 +105,11 @@
 /* Current weather styling */
 .current-weather-container{
   
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 20px;
 
-  background-color: rgba(0, 0, 0, 0.362);
-  backdrop-filter:blur(6px);
+  background-color: rgba(113, 113, 113, 0.221);
+  backdrop-filter:blur(3px);
   box-shadow: 20px 20px 75px black;
 
   position: absolute;
@@ -125,8 +128,6 @@
   padding-left: 1%;
   
 }
-
-
 
 .current-icon-container{
   width: 8vw;
@@ -168,19 +169,16 @@
 /*Future forecast styling*/
 .future-forecast-container{
   width: 9vw;
-  height: fit-content;
+  height: 12vw;
   min-height: 70pt;
-  border: 2px solid black;
-  background-color: rgba(0, 0, 0, 0.254);
-  backdrop-filter: blur(3px);
+  border: 1px solid black;
+  background-color: rgba(113, 113, 113, 0.221);
+  backdrop-filter:blur(3px);
   border-radius: 20px;
   margin: 5pt;
   padding:5pt;
   cursor: pointer;
 }
-
-
-
 
 
 .forecast-icon-container{
@@ -197,8 +195,6 @@
   margin: auto;
 }
 
-
-
 .days-list-container{
 
   display:flex;
@@ -212,7 +208,6 @@
   left: 50%;
   transform: translateX(-50%);
 }
-
 
 .forecast-temp-container{
   position: relative;

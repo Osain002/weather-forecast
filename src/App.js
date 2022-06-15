@@ -30,22 +30,26 @@ const App = () => {
     'https://images6.alphacoders.com/568/thumb-1920-568500.jpg',
     'https://www.teahub.io/photos/full/364-3646715_countryside-grass-fields-scenery-4k-landscape-field-hd.jpg',
     'https://www.pixelstalk.net/wp-content/uploads/images6/City-Wallpaper-4K-HD-Free-download.jpg',
+    'https://www.technocrazed.com/wp-content/uploads/2015/12/Paris-Wallpaper-background-21.jpg',
+    'https://images7.alphacoders.com/408/thumb-1920-408397.jpg',
+    'https://wallpapercave.com/wp/wp4088751.jpg',
+    'https://wallpaperaccess.com/full/1564384.jpg',
+    'https://images.pexels.com/photos/2779863/pexels-photo-2779863.jpeg?cs=srgb&dl=pexels-nextvoyage-2779863.jpg&fm=jpg'
   ]
 
 
-
-  
-  const handle_search = (event) => { 
-
-    event.preventDefault()
-
-    let searched_location = document.forms['searchForm']['search_bar']
-    let full_url = baseURL + "appid=" + apiKey + "&q=" + searched_location.value  //build request url for current weather API request
-    let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${searched_location.value}&appid=${apiKey}` //build url for forecast data API request
-    
+  const build_requests = (city) => {
+    let full_url = baseURL + "appid=" + apiKey + "&q=" + city  //build request url for current weather API request
+    let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}` //build url for forecast data API request
     get_forecast_data(forecastURL)
     get_current_data(full_url)
-   
+  }
+  
+
+  const handle_search = (event) => { 
+    event.preventDefault()
+    let searched_location = document.forms['searchForm']['search_bar']
+    build_requests(searched_location.value)
   }
 
 
@@ -54,7 +58,7 @@ const App = () => {
     const response = await fetch(url_)
     const jsonData = await response.json()
     console.log(jsonData)
-    if (jsonData.cod == 404) {
+    if (jsonData.cod === 404) {
       alert('invalid location')
     }else{
       setWeatherData(jsonData)
@@ -105,9 +109,9 @@ const App = () => {
       icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
     }
 
-    if (current_searched.some((obj) => obj.location === searched_location.location) == false){ //check if new location is already included in  current_searched
+    if (current_searched.some((obj) => obj.location === searched_location.location) === false){ //check if new location is already included in  current_searched
       
-      if (current_searched.length > 3){
+      if (current_searched.length > 4){
         current_searched.pop()
       }
       console.log(searched_location)
@@ -119,6 +123,9 @@ const App = () => {
   }
 
 
+  const get_from_recent = (data) => {
+    setWeatherData(data)
+  }
 
   useEffect(() => { //when first loaded, get default weather info from API
     const default_url = "https://api.openweathermap.org/data/2.5/weather?appid=611042e26a7e14d8816d44ac68c3562c&q=london"
@@ -158,7 +165,11 @@ const App = () => {
 
       {
         prevSearched?(
-          prevSearched.map((item) => <RecentlySearched data={item}/>)
+          prevSearched.map((item) => <RecentlySearched 
+                                        key={item.id} 
+                                        data={item} 
+                                        build_requests={build_requests}
+                                        />)
         ):(
           <p>No data</p>
         )

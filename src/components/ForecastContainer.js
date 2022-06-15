@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
+import {useState } from "react"
 import ForecastIcon from "./ForecastIcon"
 import ForecastInfo from "./ForecastInfo"
-
+import React from 'react';
 
 
 const ForecastContainer = (props) => {
