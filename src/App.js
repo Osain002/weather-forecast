@@ -7,10 +7,6 @@ import Header from './components/Header';
 import RecentlySearched from './components/RecentlySearched';
 
 
-
-
-
-
 const App = () => {
   
   const [weatherData, setWeatherData] = useState() //track state of CURRENT weather data received from API
@@ -58,6 +54,7 @@ const App = () => {
     const response = await fetch(url_)
     const jsonData = await response.json()
     console.log(jsonData)
+    
     if (jsonData.cod === 404) {
       alert('invalid location')
     }else{
@@ -75,6 +72,7 @@ const App = () => {
 
     const response = await fetch(url_)
     const jsonData = await response.json()
+
     const list = jsonData.list
     let forecast_list = []
 
@@ -102,8 +100,9 @@ const App = () => {
 
 
   const add_to_history = (data) => {
-    const current_searched = prevSearched //get current state of prevSearched (will be an array of objects)
-    const searched_location = { //this will become a constructor once more data is required
+    const current_searched = prevSearched; //get current state of prevSearched (will be an array of objects)
+
+    const searched_location = {
       location: data.name,
       temp: Math.floor(data.main.temp - 273),
       icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
@@ -114,18 +113,13 @@ const App = () => {
       if (current_searched.length > 4){
         current_searched.pop()
       }
-      console.log(searched_location)
-      
+
       searched_location.id = current_searched.length
       current_searched.unshift(searched_location) //push searched location to current_searched
       setPrevSearched(current_searched) //update prevSearched
     }
   }
 
-
-  const get_from_recent = (data) => {
-    setWeatherData(data)
-  }
 
   useEffect(() => { //when first loaded, get default weather info from API
     const default_url = "https://api.openweathermap.org/data/2.5/weather?appid=611042e26a7e14d8816d44ac68c3562c&q=london"
@@ -135,10 +129,6 @@ const App = () => {
   }, [])
 
 
-
-
-
-//611042e26a7e14d8816d44ac68c3562c
   return (
     <div 
       className="App" 

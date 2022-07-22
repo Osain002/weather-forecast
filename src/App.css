@@ -7,6 +7,7 @@
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+  min-height: 100pt;
 }
 
 .header{
@@ -120,7 +121,7 @@
 
   width: 50vw;
   height: 20vw;
-  min-width: 450pt;
+  min-width: 200pt;
   min-height: 150pt;
 
   margin:auto;
