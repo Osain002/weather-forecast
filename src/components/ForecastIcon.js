@@ -11,11 +11,14 @@ const ForecastIcon = (props) => {
 
 
     useEffect(() => {
-        const base_url =`https://openweathermap.org/img/wn/${props.day.weather[0].icon}@2x.png` //endpoint for icon
-        const d = new Date(props.day.dt_txt)
+        const base_url =`https://openweathermap.org/img/wn/${props.day.weather[0].icon}@2x.png`
+        console.log(base_url)
         setImg(base_url)
-        setDay(days[d.getDay()])
 
+        var d = new Date(props.day.dt_txt)
+        
+        setDay(days[d.getDay()])
+        console.log(d)
       },[props])
 
     return (
