@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import CurrentWeather from './components/CurrentWeather';
 import ForecastContainer from './components/ForecastContainer';
 import Header from './components/Header';
@@ -12,7 +12,7 @@ import RecentlySearched from './components/RecentlySearched';
 
 
 const App = () => {
-  
+
   const [weatherData, setWeatherData] = useState() //track state of CURRENT weather data received from API
   const [forecast, setForecast] = useState() //track state of 5 day forecast data 
   const [bgChange, setBgChange] = useState(0) //track state of background 
@@ -44,9 +44,9 @@ const App = () => {
     get_forecast_data(forecastURL)
     get_current_data(full_url)
   }
-  
 
-  const handle_search = (event) => { 
+
+  const handle_search = (event) => {
     event.preventDefault()
     let searched_location = document.forms['searchForm']['search_bar']
     build_requests(searched_location.value)
@@ -60,7 +60,7 @@ const App = () => {
     console.log(jsonData)
     if (jsonData.cod === 404) {
       alert('invalid location')
-    }else{
+    } else {
       setWeatherData(jsonData)
       add_to_history(jsonData)
       changeBackground() //change background whenever new location is searched
@@ -71,14 +71,14 @@ const App = () => {
 
 
 
-  const get_forecast_data = async(url_) => {
+  const get_forecast_data = async (url_) => {
 
     const response = await fetch(url_)
     const jsonData = await response.json()
     const list = jsonData.list
     let forecast_list = []
 
-    for (var i = 5; i<list.length; i+=8){
+    for (var i = 5; i < list.length; i += 8) {
       forecast_list.push(list[i])
     }
     setForecast(forecast_list)
@@ -89,9 +89,9 @@ const App = () => {
 
 
   const changeBackground = () => {
-    if (bgChange < background_list.length - 1){ //checks that {int bgChange} is not exceeding the length of image list
+    if (bgChange < background_list.length - 1) { //checks that {int bgChange} is not exceeding the length of image list
       setBgChange(bgChange + 1) //if bgChange is less than the length of image list, move to the next image in the list
-    }else{
+    } else {
       setBgChange(0) //if last image in the list, go back to first image in the list
     }
   }
@@ -109,13 +109,13 @@ const App = () => {
       icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
     }
 
-    if (current_searched.some((obj) => obj.location === searched_location.location) === false){ //check if new location is already included in  current_searched
-      
-      if (current_searched.length > 4){
+    if (current_searched.some((obj) => obj.location === searched_location.location) === false) { //check if new location is already included in  current_searched
+
+      if (current_searched.length > 4) {
         current_searched.pop()
       }
       console.log(searched_location)
-      
+
       searched_location.id = current_searched.length
       current_searched.unshift(searched_location) //push searched location to current_searched
       setPrevSearched(current_searched) //update prevSearched
@@ -138,66 +138,72 @@ const App = () => {
 
 
 
-//611042e26a7e14d8816d44ac68c3562c
+  //611042e26a7e14d8816d44ac68c3562c
   return (
-    <div 
-      className="App" 
-      style={{backgroundImage: `url('${background_list[bgChange]}')`
+    <div
+      className="App"
+      style={{
+        backgroundImage: `url('${background_list[bgChange]}')`
       }}>
 
+
+
       {
-      weatherData?(
-        <Header city={weatherData.name}/>
-      ):(
-        <h5>NULL</h5>
-      )}
-      
+        weatherData ? (
+          <Header city={weatherData.name} />
+        ) : (
+          <h5>NULL</h5>
+        )}
+
       <div className="search_container">
         <form name='searchForm' onSubmit={handle_search}>
-          <input 
-            className="searchBar" 
+          <input
+            className="searchBar"
             type='search'
-            name='search_bar' 
+            name='search_bar'
             placeholder='Search by City...'
           />
         </form>
       </div>
 
+      <div className='main-wrapper'>
+
       {
-        prevSearched?(
-          prevSearched.map((item) => <RecentlySearched 
-                                        key={item.id} 
-                                        data={item} 
-                                        build_requests={build_requests}
-                                        />)
-        ):(
+        prevSearched ? (
+          prevSearched.map((item) => <RecentlySearched
+            key={item.id}
+            data={item}
+            build_requests={build_requests}
+          />)
+        ) : (
           <p>No data</p>
         )
-      } 
-
-      {
-        weatherData?(
-          <CurrentWeather 
-            weatherData={weatherData}
-          />
-        ):(
-          <>
-            <h1>Cannot load data</h1>
-          </>
-        )
       }
-      
 
-      <div className='days-list-container'>
+      
         {
-          forecast?(
-            forecast.map((day) => <ForecastContainer key={day.dt} day={day}/>)
-          ):(
-            <h1>No data</h1>
+          weatherData ? (
+            <CurrentWeather
+              weatherData={weatherData}
+            />
+          ) : (
+            <>
+              <h1>Cannot load data</h1>
+            </>
           )
         }
+
+
+        <div className='days-list-container'>
+          {
+            forecast ? (
+              forecast.map((day) => <ForecastContainer key={day.dt} day={day} />)
+            ) : (
+              <h1>No data</h1>
+            )
+          }
+        </div>
       </div>
-      
     </div>
   );
 }
