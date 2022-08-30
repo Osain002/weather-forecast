@@ -73,7 +73,7 @@ const App = () => {
                         }
                     )
             }
-            )
+        ).catch( err => alert("Error:", err))
     }
 
 
