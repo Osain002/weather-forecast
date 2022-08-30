@@ -1,18 +1,14 @@
 
-
-/* App.js and header styling */
 .App{
-  background-image: url('https://wallpaperaccess.com/full/504983.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100%;
+  height: 100vh;
 }
-
-
 .main-wrapper{
+  margin-top: 30pt;
   min-width: 850pt;
-  min-height: 300pt;
+  min-height: 200pt;
+  display: flex;
+  flex-direction: row;
+
 
 }
 
@@ -35,6 +31,7 @@
   width: 50vw;
   min-width: 300pt;
   border-radius: 20px;
+
   box-shadow: 10px 10px 45px black;
   background-color: rgba(52, 52, 52, 0.254);
   max-height: 30pt;
@@ -60,8 +57,8 @@
 
 .recently-searched{
   border: 1px solid black;
-  width: 20vw;
-  height: 10vh;
+  width: 70%;
+  height: 25%;
 
   
   min-width: 175pt;
@@ -76,6 +73,10 @@
 
   cursor: pointer;
 
+}
+.ps{
+  width: 25vw;
+  min-width:200pt;
 }
 
 
@@ -120,11 +121,11 @@
   backdrop-filter:blur(3px);
   box-shadow: 20px 20px 75px black;
 
-  position: relative;
+  
   margin: auto;
 
-  width: 50vw;
-  height: 20vw;
+  width: 100%;
+  height: 100%;
   min-width: 450pt;
   min-height: 150pt;
 
@@ -132,6 +133,11 @@
   
   padding-left: 1%;
   
+}
+.cw{
+  width: 50%;
+  min-width: 450pt;
+  border: 3px solid green;
 }
 
 .current-icon-container{
@@ -214,6 +220,7 @@
   
   margin-left: auto;
   margin-right: auto;
+  margin-top: 30pt;
   
   
 }
