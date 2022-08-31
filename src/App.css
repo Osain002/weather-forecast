@@ -1,6 +1,6 @@
 
 .App{
-  height: 100vh;
+  min-height: 100%;
 }
 .main-wrapper{
   margin-top: 30pt;
@@ -8,8 +8,6 @@
   min-height: 200pt;
   display: flex;
   flex-direction: row;
-
-
 }
 
 .header{

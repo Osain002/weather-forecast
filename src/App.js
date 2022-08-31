@@ -81,7 +81,7 @@ const App = () => {
 
 
     const get_forecast_data = (url_) => {
-        
+
         if (url_) fetch(url_)
             .then(res => res.json()
                 .then(json => {
@@ -201,29 +201,35 @@ const App = () => {
                 </div>
 
                 <div className='cw'>
-                    {
-                        weatherData ? (
-                            <CurrentWeather
-                                weatherData={weatherData}
-                            />
-                        ) : (
-                            <>
-                                <h1>Cannot load data</h1>
-                            </>
-                        )
-                    }
+                    <div>
+                        {
+                            weatherData ? (
+                                <CurrentWeather
+                                    weatherData={weatherData}
+                                />
+                            ) : (
+                                <>
+                                    <h1>Cannot load data</h1>
+                                </>
+                            )
+                        }
+                    </div>
+                    <div className='days-list-container'>
+                        {
+                            forecast ? (
+                                forecast.map((day) => <ForecastContainer key={day.dt} day={day} />)
+                            ) : (
+                                <h1>No data</h1>
+                            )
+                        }
+                    </div>
+
+
+
                 </div>
             </div>
 
-            <div className='days-list-container'>
-                {
-                    forecast ? (
-                        forecast.map((day) => <ForecastContainer key={day.dt} day={day} />)
-                    ) : (
-                        <h1>No data</h1>
-                    )
-                }
-            </div>
+
 
         </div>
     );
