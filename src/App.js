@@ -73,24 +73,29 @@ const App = () => {
                         }
                     )
             }
-        ).catch( err => alert("Error:", err))
+            ).catch(err => alert("Error:", err))
     }
 
 
 
 
 
-    const get_forecast_data = async (url_) => {
+    const get_forecast_data = (url_) => {
 
-        const response = await fetch(url_)
-        const jsonData = await response.json()
-        const list = jsonData.list
-        let forecast_list = []
+        fetch(url_)
+            .then(res => res.json()
+                .then(json => {
+                    const list = json.list
+                    let forecast_list = []
 
-        for (var i = 5; i < list.length; i += 8) {
-            forecast_list.push(list[i])
-        }
-        setForecast(forecast_list)
+                    for (var i = 5; i < list.length; i += 8) {
+                        forecast_list.push(list[i])
+                    }
+                    setForecast(forecast_list)
+                }
+
+                ))
+
     }
 
 
@@ -182,31 +187,31 @@ const App = () => {
             <div className='main-wrapper'>
 
                 <div className='ps'>
-                {
-                    prevSearched ? (
-                        prevSearched.map((item) => <RecentlySearched
-                            key={item.id}
-                            data={item}
-                            build_requests={build_requests}
-                        />)
-                    ) : (
-                        <p>No data</p>
-                    )
-                }
+                    {
+                        prevSearched ? (
+                            prevSearched.map((item) => <RecentlySearched
+                                key={item.id}
+                                data={item}
+                                build_requests={build_requests}
+                            />)
+                        ) : (
+                            <p>No data</p>
+                        )
+                    }
                 </div>
 
                 <div className='cw'>
-                {
-                    weatherData ? (
-                        <CurrentWeather
-                            weatherData={weatherData}
-                        />
-                    ) : (
-                        <>
-                            <h1>Cannot load data</h1>
-                        </>
-                    )
-                }
+                    {
+                        weatherData ? (
+                            <CurrentWeather
+                                weatherData={weatherData}
+                            />
+                        ) : (
+                            <>
+                                <h1>Cannot load data</h1>
+                            </>
+                        )
+                    }
                 </div>
             </div>
 
