@@ -223,9 +223,19 @@
 
   overflow-y: hidden;
   overflow-x: hidden;
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
   
   
 }
+
+
+.days-list-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
 
 .forecast-temp-container{
   position: relative;
