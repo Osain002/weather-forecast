@@ -57,7 +57,7 @@
 
 .recently-searched{
   border: 1px solid black;
-  width: 70%;
+  width: 90%;
   height: 25%;
 
   
@@ -67,7 +67,7 @@
   border-radius: 5pt;
   background-color: rgba(75, 75, 75, 0.469);
   backdrop-filter:blur(5px);
-  box-shadow: 10px 10px 40px black;
+  
   color: rgb(181, 235, 255);
   padding-left: 10pt;
 
@@ -75,8 +75,10 @@
 
 }
 .ps{
+  max-height: 40vh;
   width: 25vw;
   min-width:200pt;
+  overflow: scroll;
 }
 
 

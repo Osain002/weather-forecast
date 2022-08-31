@@ -19,7 +19,7 @@ const App = () => {
     const [prevSearched, setPrevSearched] = useState([]) //track state of search history
 
 
-    const baseURL = "http://api.openweathermap.org/data/2.5/weather?" //base url for api request
+    const baseURL = "https://api.openweathermap.org/data/2.5/weather?" //base url for api request
     const apiKey = '611042e26a7e14d8816d44ac68c3562c'
 
 
@@ -40,7 +40,7 @@ const App = () => {
 
     const build_requests = (city) => {
         let full_url = baseURL + "appid=" + apiKey + "&q=" + city  //build request url for current weather API request
-        let forecastURL = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}` //build url for forecast data API request
+        let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}` //build url for forecast data API request
 
         get_current_data(full_url, forecastURL)
     }
@@ -120,7 +120,7 @@ const App = () => {
         const searched_location = { //this will become a constructor once more data is required
             location: data.name,
             temp: Math.floor(data.main.temp - 273),
-            icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+            icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
         }
 
         if (current_searched.some((obj) => obj.location === searched_location.location) === false) { //check if new location is already included in  current_searched
@@ -142,8 +142,8 @@ const App = () => {
     }
 
     useEffect(() => { //when first loaded, get default weather info from API
-        const default_url = "http://api.openweathermap.org/data/2.5/weather?appid=611042e26a7e14d8816d44ac68c3562c&q=london"
-        const default_forecast = "http://api.openweathermap.org/data/2.5/forecast?q=plymouth&appid=611042e26a7e14d8816d44ac68c3562c"
+        const default_url = "https://api.openweathermap.org/data/2.5/weather?appid=611042e26a7e14d8816d44ac68c3562c&q=london"
+        const default_forecast = "https://api.openweathermap.org/data/2.5/forecast?q=plymouth&appid=611042e26a7e14d8816d44ac68c3562c"
 
         get_current_data(default_url)
         get_forecast_data(default_forecast)
