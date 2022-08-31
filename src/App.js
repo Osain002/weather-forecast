@@ -81,8 +81,8 @@ const App = () => {
 
 
     const get_forecast_data = (url_) => {
-
-        fetch(url_)
+        
+        if (url_) fetch(url_)
             .then(res => res.json()
                 .then(json => {
                     const list = json.list
